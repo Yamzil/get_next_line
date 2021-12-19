@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yamzil <yamzil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/16 17:30:11 by yamzil            #+#    #+#             */
-/*   Updated: 2021/12/19 21:50:00 by yamzil           ###   ########.fr       */
+/*   Created: 2021/12/19 20:29:07 by yamzil            #+#    #+#             */
+/*   Updated: 2021/12/19 21:45:05 by yamzil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 #include <stdio.h>
 
 static char    *ft_read_fd(int fd,char *tmp)
@@ -83,34 +83,33 @@ char    *ft_take_rest(char *tmp)
 
 char    *get_next_line(int fd)
 {
-	static char *rd;
+	static char *rd[1024];
 	char    *l;
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return(NULL);
-	rd = ft_read_fd(fd, rd);
-	if (!rd)
+	rd[fd] = ft_read_fd(fd, rd[fd]);
+	if (!rd[fd])
 		return(NULL);
-	l = ft_take_line(rd);
-	rd = ft_take_rest(rd);
+	l = ft_take_line(rd[fd]);
+	rd[fd] = ft_take_rest(rd[fd]);
 	
 return(l);
 }
 
-
-int main()
-{
-	int fd;
-	fd = open("yaya.txt", O_RDONLY);
+// int main()
+// {
+// 	int fd;
+// 	fd = open("yaya.txt", O_RDONLY);
    
-	printf("%s",get_next_line(fd));
-	printf("%s",get_next_line(fd));
-	printf("%s",get_next_line(fd));
-	printf("%s",get_next_line(fd));
-	printf("%s",get_next_line(fd));
-	printf("%s",get_next_line(fd));
-	printf("%s",get_next_line(fd));
-	printf("%s",get_next_line(fd));
-	printf("%s",get_next_line(fd));
-	printf("%s",get_next_line(fd));
-	printf("%s",get_next_line(fd));
-}
+// 	printf("%s",get_next_line(fd));
+// 	printf("%s",get_next_line(fd));
+// 	printf("%s",get_next_line(fd));
+// 	printf("%s",get_next_line(fd));
+// 	printf("%s",get_next_line(fd));
+// 	printf("%s",get_next_line(fd));
+// 	printf("%s",get_next_line(fd));
+// 	printf("%s",get_next_line(fd));
+// 	printf("%s",get_next_line(fd));
+// 	printf("%s",get_next_line(fd));
+// 	printf("%s",get_next_line(fd));
+// }
