@@ -95,21 +95,3 @@ char    *get_next_line(int fd)
 	
 return(l);
 }
-
-// int main()
-// {
-// 	int fd;
-// 	fd = open("yaya.txt", O_RDONLY);
-   
-// 	printf("%s",get_next_line(fd));
-// 	printf("%s",get_next_line(fd));
-// 	printf("%s",get_next_line(fd));
-// 	printf("%s",get_next_line(fd));
-// 	printf("%s",get_next_line(fd));
-// 	printf("%s",get_next_line(fd));
-// 	printf("%s",get_next_line(fd));
-// 	printf("%s",get_next_line(fd));
-// 	printf("%s",get_next_line(fd));
-// 	printf("%s",get_next_line(fd));
-// 	printf("%s",get_next_line(fd));
-// }
